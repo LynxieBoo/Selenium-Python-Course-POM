@@ -3,6 +3,11 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import time
 
+
+def get_one_price_from_string(string):
+    return ''.join(list(filter(lambda digit: '0' <= digit <= '9' or digit in ',.', string)))
+
+
 class BasePage:
     def __init__(self, browser, url, timeout=10):
         self.browser = browser

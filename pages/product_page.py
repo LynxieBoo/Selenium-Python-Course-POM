@@ -1,4 +1,4 @@
-from .base_page import BasePage
+from .base_page import BasePage, get_one_price_from_string
 from .locators import ProductPageLocators
 
 
@@ -59,10 +59,11 @@ class ProductPage(BasePage):
 
     def check_same_cart_and_product_cost(self):
         main_product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        main_product_price = get_one_price_from_string(main_product_price)
         alert_cart_cost = self.browser.find_element(*ProductPageLocators.TOTAL_PRICE_ALERT).text
-        alert_cart_cost = alert_cart_cost.split(' ')[-1]
+        alert_cart_cost = get_one_price_from_string(alert_cart_cost)
         mini_cart_cost = self.browser.find_element(*ProductPageLocators.TOTAL_PRICE_BASKET_MINI).text
-        mini_cart_cost = mini_cart_cost.split('\n')[0].split(' ')[2]
+        mini_cart_cost = get_one_price_from_string(mini_cart_cost)
 
         warning = 'Product price, cost in the mini cart and in the alert field are different'
         assert main_product_price == alert_cart_cost == mini_cart_cost, warning
