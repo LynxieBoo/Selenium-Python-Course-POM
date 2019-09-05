@@ -12,7 +12,7 @@ class ProductPage(BasePage):
         self.should_be_same_cart_and_product_cost()
 
     def should_be_promo_url(self):
-        assert 'promo=newYear' in self.browser.current_url, "'promo=newYear' is not presented in URL"
+        assert 'promo=' in self.browser.current_url, "'promo=' is not presented in URL"
 
     def should_be_add_to_cart_button(self):
         assert self.is_element_present(*ProductPageLocators.ADD_TO_CART_BUTTON), "'Add to cart' button is not presented"
