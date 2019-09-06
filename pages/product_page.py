@@ -67,3 +67,11 @@ class ProductPage(BasePage):
 
         warning = 'Product price, cost in the mini cart and in the alert field are different'
         assert main_product_price == alert_cart_cost == mini_cart_cost, warning
+
+    def should_not_be_success_message(self):
+        warning = "Success message is presented, but should not be"
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), warning
+
+    def should_disappear_success_message(self):
+        warning = "Success message is presented, but should disappear"
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), warning
