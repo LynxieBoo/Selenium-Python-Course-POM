@@ -1,5 +1,9 @@
-from .base_page import BasePage, get_one_price_from_string
+from .base_page import BasePage
 from .locators import ProductPageLocators
+
+
+def get_one_price_from_string(string):
+    return ''.join(list(filter(lambda digit: '0' <= digit <= '9' or digit in ',.', string)))
 
 
 class ProductPage(BasePage):

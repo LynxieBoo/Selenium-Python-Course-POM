@@ -8,15 +8,15 @@ from .locators import BasePageLocators
 import time
 
 
-def get_one_price_from_string(string):
-    return ''.join(list(filter(lambda digit: '0' <= digit <= '9' or digit in ',.', string)))
-
-
 class BasePage:
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
+
+    def go_to_cart_page(self):
+        link = self.browser.find_element(*BasePageLocators.CART_LINK)
+        link.click()
 
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
@@ -46,6 +46,9 @@ class BasePage:
 
     def open(self):
         self.browser.get(self.url)
+
+    def should_be_cart_link(self):
+        assert self.is_element_present(*BasePageLocators.CART_LINK), "Cart link is not presented"
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
