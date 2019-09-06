@@ -20,6 +20,7 @@ def test_guest_can_add_product_to_basket(browser, link=urls[0]):
     page.add_product_to_cart()
 
 
+@pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser, link=urls[0]):
     page = ProductPage(browser, link)
     page.open()
@@ -33,6 +34,7 @@ def test_guest_cant_see_success_message(browser, link=urls[0]):
     page.should_not_be_success_message()
 
 
+@pytest.mark.xfail
 def test_message_disappeared_after_adding_product_to_basket(browser, link=urls[0]):
     page = ProductPage(browser, link)
     page.open()
