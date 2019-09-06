@@ -6,4 +6,5 @@ Save and install requirements file
 - pip install -r requirements.txt
 
 Start pytest with main options
-- pytest -s -v --tb=line test_file.py
+- pytest -v --tb=line --language=en -m need_review
+

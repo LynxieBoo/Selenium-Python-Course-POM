@@ -47,6 +47,10 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
+    def should_be_authorized_user(self):
+        warning = "User icon is not presented, probably unauthorised user"
+        assert self.is_element_present(*BasePageLocators.USER_ICON), warning
+
     def should_be_cart_link(self):
         assert self.is_element_present(*BasePageLocators.CART_LINK), "Cart link is not presented"
 
