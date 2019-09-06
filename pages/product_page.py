@@ -8,7 +8,6 @@ def get_one_price_from_string(string):
 
 class ProductPage(BasePage):
     def add_product_to_cart(self):
-        self.should_be_promo_url()
         self.should_be_add_to_cart_button()
         self.click_add_product_to_cart_button()
         self.solve_quiz_and_get_code()
