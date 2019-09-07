@@ -72,12 +72,10 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser, link
 
 def generate_new_user():
     email_len = random.randint(7, 10)
-    domain_len = random.randint(5, 8)
     pwd_len = random.randint(10, 15)
     email_chars = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     pwd_chars = email_chars + '+-/*!&$#?=@<>1234567890'
-    email = ''.join(random.choices(email_chars, k=email_len)) + '@' + ''.join(random.choices(email_chars, k=domain_len))
-    email += '.' + ''.join(random.choices(email_chars, k=3))
+    email = ''.join(random.choices(email_chars, k=email_len)) + '@fakemail.com'
     password = ''.join(random.choices(pwd_chars, k=pwd_len))
     return email, password
 
